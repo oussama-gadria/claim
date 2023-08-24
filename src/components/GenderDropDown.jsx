@@ -33,7 +33,6 @@ const GenderDropDowm = ({setGender,gender}) => {
                         <div className="py-1" role="none">
                             <a href='/#' className="text-gray-700 block px-4 py-1 text-xs cursor-pointer" role="menuitem" tabIndex="-1" onClick={() => selectGender('Male')}>Male</a>
                             <a href='/#' className="text-gray-700 block px-4 py-1 text-xs cursor-pointer" role="menuitem" tabIndex="-1" onClick={() => selectGender('Female')}>Female</a>
-                           
                         </div>
                     </div>
                 )}
