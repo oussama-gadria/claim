@@ -31,8 +31,8 @@ const GenderDropDowm = ({setGender,gender}) => {
                 {isOpen && (
                     <div className="absolute  md:right-0 z-10 mt-1 w-48  rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:border-darkBlue dark:placeholder-gray-400 dark:text-white dark:bg-darkBlue" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1" >
                         <div className="py-1" role="none">
-                            <a href='/#' className="text-gray-700 block px-4 py-1 text-xs cursor-pointer" role="menuitem" tabIndex="-1" onClick={() => selectGender('Male')}>Male</a>
-                            <a href='/#' className="text-gray-700 block px-4 py-1 text-xs cursor-pointer" role="menuitem" tabIndex="-1" onClick={() => selectGender('Female')}>Female</a>
+                            <button  className="text-gray-700 block px-4 py-1 text-xs cursor-pointer" role="menuitem" tabIndex="-1" onClick={() => selectGender('Male')}>Male</button>
+                            <button  className="text-gray-700 block px-4 py-1 text-xs cursor-pointer" role="menuitem" tabIndex="-1" onClick={() => selectGender('Female')}>Female</button>
                         </div>
                     </div>
                 )}

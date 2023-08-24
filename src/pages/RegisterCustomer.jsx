@@ -3,6 +3,8 @@ import { CREATE_CUSTOMER_MUTATION } from "../graphqlFiles/mutations";
 import { useMutation } from "@apollo/client";
 import GenderDropDowm from "../components/GenderDropDown";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
 const RegisterCustomer = () => {
     const [firstname, setFirstname] = useState();
     const [lastname, setLastname] = useState();
@@ -21,18 +23,11 @@ const RegisterCustomer = () => {
         confirmPassword: { required: true, minLength: 8 }
     }
     const saveCustomer = () => {
-        if ((confirmPassword !== password)&&(password && confirmPassword)) {
+        if ((confirmPassword !== password) && (password && confirmPassword)) {
             setIsPasswordConfirm(true);
         } else {
             setIsPasswordConfirm(false);
-            const input = {
-                firstname: firstname,
-                lastname: lastname,
-                email: email,
-                gender: gender,
-                password: password,
-            }
-            createCustomer({ variables: { input } })
+            createCustomer({ variables: { firstname, lastname, email, gender, password } })
                 .then((response) => {
                     console.log(response.data.createCustomerV2.customer);
                 })
@@ -40,14 +35,16 @@ const RegisterCustomer = () => {
                     console.error(error);
                 })
         }
-
     }
     return (
         <>
             <div className="flex  min-h-full flex-col justify-center  px-6 py-12 lg:px-8">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-sm">
                     <img className="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create Account</h2>
+                    <Link to='/signIn'>
+                        <button className="text-xs text-blue-700">Already have an account ?</button>
+                    </Link>
                 </div>
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form onSubmit={handleSubmit(saveCustomer)} className="space-y-6">
