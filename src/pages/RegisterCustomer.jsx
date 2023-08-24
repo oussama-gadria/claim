@@ -3,7 +3,6 @@ import { CREATE_CUSTOMER_MUTATION } from "../graphqlFiles/mutations";
 import { useMutation } from "@apollo/client";
 import GenderDropDowm from "../components/GenderDropDown";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 const RegisterCustomer = () => {
     const [firstname, setFirstname] = useState();
     const [lastname, setLastname] = useState();
@@ -11,6 +10,7 @@ const RegisterCustomer = () => {
     const [gender, setGender] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setconfirmPassword] = useState();
+    const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
     const [createCustomer] = useMutation(CREATE_CUSTOMER_MUTATION);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const validation = {
@@ -21,32 +21,33 @@ const RegisterCustomer = () => {
         confirmPassword: { required: true, minLength: 8 }
     }
     const saveCustomer = () => {
-        const input = {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            gender: gender,
-            password: password,
+        if ((confirmPassword !== password)&&(password && confirmPassword)) {
+            setIsPasswordConfirm(true);
+        } else {
+            setIsPasswordConfirm(false);
+            const input = {
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                gender: gender,
+                password: password,
+            }
+            createCustomer({ variables: { input } })
+                .then((response) => {
+                    console.log(response.data.createCustomerV2.customer);
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
         }
 
-        console.log(input)
-        createCustomer({ variables: { input } })
-            .then((response) => {
-                console.log(response.data.createCustomerV2.customer);
-            })
-            .catch((error) => {
-                console.error(error);
-            })
     }
     return (
         <>
             <div className="flex  min-h-full flex-col justify-center  px-6 py-12 lg:px-8">
-                <div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img className="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create Account</h2>
-                    <Link to='/signIn'>
-                        <a href="/#" className="text-xs text-blue-700">Already have a account ?</a>
-                    </Link>
                 </div>
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form onSubmit={handleSubmit(saveCustomer)} className="space-y-6">
@@ -84,8 +85,7 @@ const RegisterCustomer = () => {
                                         <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
                                             <p>Email is required !</p>
                                         </div>
-                                    </div>
-                                }
+                                    </div>}
                                 {errors?.email?.type === 'pattern' &&
                                     <div role="alert">
                                         <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
@@ -132,6 +132,13 @@ const RegisterCustomer = () => {
                                             <p>Password should have at least 8 character !</p>
                                         </div>
                                     </div>}
+                                {isPasswordConfirm &&
+                                    <div role="alert">
+                                        <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
+                                            <p>Password and Confirm Password doesn't match</p>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                         <div>
