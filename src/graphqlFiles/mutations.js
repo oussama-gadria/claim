@@ -1,18 +1,29 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
+
 export const CREATE_CUSTOMER_MUTATION = gql`
-  mutation CreateCustomer($input:String) {
-    createCustomerV2(input: $input) {
+  mutation CreateCustomer(
+    $firstname: String!
+    $lastname: String!
+    $email: String!
+    $gender: String!
+    $password: String!
+  ) {
+    createCustomerV2(firstname: $firstname,lastname:$lastname,email:$email,gender:$gender,password:$password) {
       customer {
         firstname
         lastname
-        middlename
         email
         date_of_birth
         gender
-        is_subscribed
-        default_billing
-        default_shipping
       }
+    }
+  }
+`;
+
+export  const GENERATE_CUSTOMER_TOKEN = gql`
+  mutation genereateCustomerToken($email:String!,$password:String!) {
+    generateCustomerToken(email:$email,password:$password) {
+      token
     }
   }
 `;
