@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { GENERATE_CUSTOMER_TOKEN } from '../graphqlFiles/mutations';
+//import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
 const SignIn = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const SignIn = () => {
     const signInCustomer = () => {
         createTokenCustomer({ variables: { email, password } })
             .then((response) => {
-                console.log(response.data.GENERATE_CUSTOMER_TOKEN.token);
+                localStorage.setItem('token', response.data.generateCustomerToken.token)
                 navigate('/home')
             })
             .catch((err) => console.log(err));
