@@ -25,7 +25,12 @@ const RegisterCustomer = () => {
     firstname: { required: true },
     lastname: { required: true },
     email: { required: true, pattern: /[a-z0-9._%]+@[a-z0-9]+\.[a-z]{2,}$/i },
-    password: { required: true, minLength: 8 , pattern: /^^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*\d){1,})(?=(.*[-+_!@#$%^&*.,?]){1,}).+$/i },
+    password: {
+      required: true,
+      minLength: 8,
+      pattern:
+        /^^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*\d){1,})(?=(.*[-+_!@#$%^&*.,?]){1,}).+$/i,
+    },
     confirmPassword: { required: true, minLength: 8 },
   };
   const input = {
@@ -48,6 +53,9 @@ const RegisterCustomer = () => {
         .catch((error) => {
           setErrorMessage(error);
           setEmailExist(true);
+          setTimeout(() => {
+            setEmailExist(false);
+          }, 2000);
           console.error(error);
         });
     }
@@ -143,7 +151,7 @@ const RegisterCustomer = () => {
                     </div>
                   </div>
                 )}
-                  { emailExist && (
+                {emailExist && (
                   <div role="alert">
                     <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
                       <p>{errorMessage.message}</p>
@@ -194,7 +202,11 @@ const RegisterCustomer = () => {
                 {errors?.password?.type === "pattern" && (
                   <div role="alert">
                     <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
-                      <p>Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.</p>
+                      <p>
+                        Minimum of different classes of characters in password
+                        is 3. Classes of characters: Lower Case, Upper Case,
+                        Digits, Special Characters.
+                      </p>
                     </div>
                   </div>
                 )}

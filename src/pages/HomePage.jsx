@@ -1,4 +1,13 @@
+import Header from "../components/Header";
+import imageCover from "../assets/image/imageCover.jpg"
+import SearchByCategory from "../components/SearchByCategory";
 const HomePage = () => {
-  return <h6>Home Page Coming Soon...</h6>;
+  return ( 
+    <>
+    <Header/>
+   <img className="w-full h-[700px]" src={imageCover} alt="..."/>
+   <SearchByCategory/>
+    </>
+  );
 };
 export default HomePage;
