@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CREATE_CUSTOMER_MUTATION } from "../graphqlFiles/mutations";
 import { useMutation } from "@apollo/client";
-import GenderDropDowm from "../components/GenderDropDown";
+import GenderDropDowm from "../components/common/GenderDropDown";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -22,6 +22,7 @@ const RegisterCustomer = () => {
         password: { required: true, minLength: 8 },
         confirmPassword: { required: true, minLength: 8 }
     }
+<<<<<<< Updated upstream
     const saveCustomer = () => {
         if ((confirmPassword !== password) && (password && confirmPassword)) {
             setIsPasswordConfirm(true);
@@ -45,6 +46,51 @@ const RegisterCustomer = () => {
                     <Link to='/signIn'>
                         <button className="text-xs text-blue-700">Already have an account ?</button>
                     </Link>
+=======
+  };
+  return (
+    <>
+      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="flex  flex-col items-center sm:mx-auto sm:w-full sm:max-w-sm">
+          <img
+            className="mx-auto h-10 w-auto"
+            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            alt="Your Company"
+          />
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Create Account
+          </h2>
+          <Link to="/signIn">
+            <button className="text-xs text-blue-700">
+              Already have an account ?
+            </button>
+          </Link>
+        </div>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form onSubmit={handleSubmit(saveCustomer)} className="space-y-6">
+            <div className="flex flex-row justify-between">
+              <div>
+                <label
+                  htmlFor="firstname"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  First name
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="firstname"
+                    {...register("firstname", validation.firstname)}
+                    type="text"
+                    autoComplete="firstname"
+                    className=" w-full rounded-md border-0 py-1.5 pl-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    onChange={(e) => setFirstname(e.target.value)}
+                  />
+                  {errors?.firstname?.type === "required" && (
+                    <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
+                      <p>First name is required !</p>
+                    </div>
+                  )}
+>>>>>>> Stashed changes
                 </div>
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form onSubmit={handleSubmit(saveCustomer)} className="space-y-6">
