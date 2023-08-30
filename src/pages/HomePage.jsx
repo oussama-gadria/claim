@@ -1,10 +1,3 @@
-<<<<<<< Updated upstream
-const HomePage = () => {
-    <p>
-        Home Page Coming Soon...
-    </p>
-};
-=======
 import imageCover from "../assets/image/imageCover.jpg";
 import SearchByCategory from "../components/searchByCtegory/SearchByCategory";
 
@@ -30,5 +23,4 @@ const HomePage = () => {
   );
 };
 
->>>>>>> Stashed changes
 export default HomePage;
