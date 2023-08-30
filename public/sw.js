@@ -1,0 +1,30 @@
+// let cacheData = "appV1"; 
+// this.addEventListener('install',(event)=>{ 
+//     event.waitUntil( 
+//         caches.open(cacheData).then((cache)=>{ 
+//             cache.addAll([ 
+//                 '/SignIn',
+//                 '/datepicker.min.js',
+//                 '/bundle.js',
+//                 '/manifest.json',
+//                 '/ws',
+//                 '/Imagemark.svg?color=indigo&shade=600',
+//                 '/Imageicon-128.png',
+//                 '/script-main.js',
+//                 '/favicon.ico',
+//                 '/logo192.png',
+//                 '/index.html', 
+//                 '/'
+//             ])
+//         })
+//     )
+// });
+// this.addEventListener('fetch',(event)=>{ 
+//     event.respondWith( 
+//         caches.match(event.request).then((resp)=>{ 
+//             if(resp){ 
+//                 return resp;
+//             }
+//         })
+//     )
+// })
