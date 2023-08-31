@@ -5,10 +5,8 @@ import { GET_PRODUCTS_BY_CATEGORY } from "../graphqlFiles/query";
 
 const Shop = () => {
   const { categoryName,uid } = useParams();
-  const {data}=useQuery(GET_PRODUCTS_BY_CATEGORY,{variables:{uid}})
-  console.log(categoryName);
-  console.log(uid);
-  console.log(data);
+  const {data}=useQuery(GET_PRODUCTS_BY_CATEGORY,{variables:{uid}});
+  console.log(data)
   return (
     <>
       <div className=" bg-gray h-[184px] flex items-center">
@@ -21,7 +19,7 @@ const Shop = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-32">
+      <div className="container mx-auto">
         <BackButton goTo="/" />
       </div>
     </>

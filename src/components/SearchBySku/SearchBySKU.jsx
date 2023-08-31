@@ -3,7 +3,7 @@ import { GET_CATEGORIES_QUERY } from "../../graphqlFiles/query";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const SearchByCategory = () => {
+const SearchBySKU = () => {
   const { data } = useQuery(GET_CATEGORIES_QUERY);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -15,7 +15,7 @@ const SearchByCategory = () => {
       <div className="container mx-auto">
         <div className="flex flex-row items-center pt-9 pb-4">
           <p className="font-extrabold text-blue text-[40px]">Search Products By</p>
-          <p className="pl-1 font-extrabold  text-[40px]">Category</p>
+          <p className="pl-1 font-extrabold  text-[40px]">SKU</p>
         </div>
         <div className="flex flex-row  justify-around">
           {categories.map((categorie) => (
@@ -24,7 +24,7 @@ const SearchByCategory = () => {
                 <div className="aspect-ratio-container">
                   <img
                     alt="Bonsai"
-                    src="https://s.isanook.com/hi/0/ui/304/1520585/023_galaxys21_ultra_s21plus_lifestyle_RAN.jpg"
+                    src="https://sfractus-images.cleo.media/unsafe/0x127:736x541/2000x0/images/Google-Pixel-Fold-8925.jpg"
                   />
                 </div>
                 <a href="/#" className="text-lg mt-6 mb-2 font-bold">
@@ -38,4 +38,4 @@ const SearchByCategory = () => {
     </>
   );
 };
-export default SearchByCategory;
+export default SearchBySKU;

@@ -3,9 +3,6 @@ module.exports = {
   content: ["./src/**/*.{html,jsx,js}", 
   "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js"],
   theme: {
-<<<<<<< Updated upstream
-    extend: {},
-=======
     extend: {
       colors: {
         blue: "#255174",
@@ -23,7 +20,6 @@ module.exports = {
       },
     },
     plugins: [],
->>>>>>> Stashed changes
   },
   plugins: [],
 }

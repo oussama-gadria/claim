@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CREATE_CUSTOMER_MUTATION } from "../graphqlFiles/mutations";
 import { useMutation } from "@apollo/client";
-import GenderDropDowm from "../components/GenderDropDown";
+import GenderDropDowm from "../components/common/GenderDropDown";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -73,7 +73,7 @@ const RegisterCustomer = () => {
             Create Account
           </h2>
           <Link to="/signIn">
-            <button className="text-xs text-blue-700">
+            <button className="text-xs text-blue">
               Already have an account ?
             </button>
           </Link>
@@ -261,7 +261,7 @@ const RegisterCustomer = () => {
             <div>
               <input
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 pl-1 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-blue px-3 py-1.5 pl-1 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               />
             </div>
           </form>
