@@ -1,4 +1,4 @@
-import GlassSearchSvg from "../assets/svg/GlassSearchSvg";
+import GlassSearchSvg from "../../assets/svg/GlassSearchSvg";
 
 const SearchForm = () => {
   return (
@@ -7,9 +7,9 @@ const SearchForm = () => {
         <div className="relative">
           <GlassSearchSvg />
           <input
-            type="search"
+            type="search product"
             id="default-search"
-            className="h-[35px] w-full md:w-[150px] pl-14 text-gray-900 text-xs rounded-lg bg-gray-50 dark:border-darkBlue dark:placeholder-gray-400 dark:text-white dark:bg-darkBlue"
+            className="h-[40px] w-full md:w-[400px] pl-14 text-gray-900 text-xl rounded-lg bg-gray-50 border-2 border-blue "
             placeholder="Search..."
             required
           />

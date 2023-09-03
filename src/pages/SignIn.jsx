@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { GENERATE_CUSTOMER_TOKEN } from "../graphqlFiles/mutations";
 import { useNavigate } from "react-router-dom";
+import { TokenDispatchContext } from "../context/TokenContext";
+
 const SignIn = () => {
   const navigate = useNavigate();
   const {
@@ -20,6 +22,7 @@ const SignIn = () => {
     email: { required: true },
     password: { required: true },
   };
+  const dispatch = useContext(TokenDispatchContext)
   const signInCustomer = () => {
     createTokenCustomer({ variables: { email, password } })
       .then((response) => {
@@ -27,7 +30,10 @@ const SignIn = () => {
           "token",
           response.data.generateCustomerToken.token
         );
-        navigate("/home");
+        dispatch({ 
+         type:"createToken"
+        })
+        navigate("/");
       })
       .catch((err) => {
         setSignInErrMessage(err.message);
@@ -56,7 +62,7 @@ const SignIn = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-extrabold leading-6 text-gray-900"
               >
                 Email
               </label>
@@ -81,7 +87,7 @@ const SignIn = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-xl font-extrabold leading-6 text-gray-900"
               >
                 Password
               </label>
@@ -109,7 +115,7 @@ const SignIn = () => {
               )}
             </div>
             <Link to="/signUp">
-              <button className="text-xs text-blue-700">
+              <button className="text-sm font-extrabold text-blue">
                 create a new account ?
               </button>
             </Link>

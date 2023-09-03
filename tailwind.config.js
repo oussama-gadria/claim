@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{html,jsx,js}", 
+  "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js"],
   theme: {
     extend: {
       colors: {
-        blue: "#10163A",
+        blue: "#255174",
         gray:"#e8edde"
       },
       screens: {
@@ -15,8 +16,10 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Nunito Sans',"sans-serif"],
+        serif: ['ui-serif', 'Georgia'],
       },
     },
     plugins: [],
   },
-};
+  plugins: [],
+}
