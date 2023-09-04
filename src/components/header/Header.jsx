@@ -8,9 +8,9 @@ import SignInSvg from "../../assets/svg/SignInSvg";
 import jwt_decode from "jwt-decode";
 import SearchForm from "../common/SearchForm";
 import { TokenContext } from "../../context/TokenContext";
-const Header = () => {
+const Header = ({handleDeleteToken}) => {
   const [userIsConnect, setUserIsConnect] = useState(false);
-  const token = useContext(TokenContext);
+  const token = useContext(TokenContext) || localStorage.getItem('token');
   useEffect(()=>{
     if (token) {
       setUserIsConnect(true);
@@ -54,7 +54,7 @@ const Header = () => {
               >
                 <AvatarSvg />
               </button>
-              <DropDownProfile />
+              <DropDownProfile handleDeleteToken={handleDeleteToken}/>
             </div>
           )}
         </div>

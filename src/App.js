@@ -10,21 +10,37 @@ import Footer from "./components/footer/Footer";
 import { TokenContext, TokenDispatchContext } from "./context/TokenContext";
 import { useReducer } from "react";
 function App() {
-  const tokenReducer = (action) => {
-    if (action.type==="createToken")
-    return localStorage.getItem("token");
-    else return ""
+  const initialToken = "";
+  const tokenReducer = (token,action) => {
+    if (action.type === "createToken") {
+      localStorage.setItem("token", action.token);
+      return localStorage.getItem("token");
+    } else if (action.type === "deleteToken") {
+      localStorage.removeItem("token");
+    }
   };
-  const [token, dispatch] = useReducer(tokenReducer, "");
+
+  function handleChangeToken(token) {
+    dispatch({
+      type: "createToken",
+      token: token,
+    });
+  }
+  function handleDeleteToken() {
+    dispatch({
+      type: "deleteToken",
+    });
+  }
+  const [token, dispatch] = useReducer(tokenReducer, initialToken);
   return (
     <TokenContext.Provider value={token}>
       <TokenDispatchContext.Provider value={dispatch}>
         <div className="flex flex-col min-h-screen">
-          <Header />
+          <Header handleDeleteToken={handleDeleteToken}/>
           <Navbar />
           <Routes>
             <Route path="/signUp" element={<RegisterCustomer />}></Route>
-            <Route path="/signIn" element={<SignIn />}></Route>
+            <Route path="/signIn" element={<SignIn handleChangeToken={handleChangeToken}  />}></Route>
             <Route path="/" element={<HomePage />}></Route>
             <Route
               path="/category/:categoryName/:uid"

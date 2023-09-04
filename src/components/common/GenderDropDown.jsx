@@ -16,7 +16,7 @@ const GenderDropDowm = ({ setGender, gender }) => {
         <div>
           <button
             type="button"
-            className="flex flex-row items-center px-2 justify-between  w-48 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="flex flex-row items-center px-2 justify-between  w-48 rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             id="menu-button"
             aria-expanded={isOpen}
             aria-haspopup="true"
@@ -39,7 +39,7 @@ const GenderDropDowm = ({ setGender, gender }) => {
         </div>
         {isOpen && (
           <div
-            className="absolute  md:right-0 z-10 mt-1 w-48  rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:border-darkBlue dark:placeholder-gray-400 dark:text-white dark:bg-darkBlue"
+            className="absolute  md:right-0 z-10 mt-1 w-48   rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:border-darkBlue dark:placeholder-gray-400 dark:text-white dark:bg-darkBlue"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
@@ -47,7 +47,7 @@ const GenderDropDowm = ({ setGender, gender }) => {
           >
             <div className="py-1" role="none">
               <button
-                className="text-gray-700 block px-4 py-1 text-xs cursor-pointer"
+                className="text-black block px-4 py-1 text-md cursor-pointer"
                 role="menuitem"
                 tabIndex="-1"
                 onClick={() => selectGender(1)}
@@ -55,7 +55,7 @@ const GenderDropDowm = ({ setGender, gender }) => {
                 Male
               </button>
               <button
-                className="text-gray-700 block px-4 py-1 text-xs cursor-pointer"
+                className="text-black block px-4 py-1 text-md cursor-pointer"
                 role="menuitem"
                 tabIndex="-1"
                 onClick={() => selectGender(2)}
