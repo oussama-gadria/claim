@@ -1,6 +1,12 @@
 import { Dropdown, Ripple, initTE } from "tw-elements";
+import { useNavigate } from "react-router-dom";
 initTE({ Dropdown, Ripple });
-const DropDownProfile = () => {
+const DropDownProfile = ({handleDeleteToken}) => {
+  const navigate = useNavigate();
+  const logOut = () => {
+    handleDeleteToken();
+    navigate("/SignIn");
+  };
   return (
     <>
       <ul
@@ -9,22 +15,21 @@ const DropDownProfile = () => {
         data-te-dropdown-menu-ref
       >
         <li>
-          <a
+          <p
             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-bold text-bleu hover:bg-neutral-100 active:text-neutral-800 active:no-underline "
-            href="/#"
             data-te-dropdown-item-ref
           >
             UserName
-          </a>
+          </p>
         </li>
         <li>
-          <a
+          <button
             className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-bold text-bleu hover:bg-neutral-100 active:text-neutral-800 active:no-underline "
-            href="/#"
             data-te-dropdown-item-ref
+            onClick={logOut}
           >
             LogOut
-          </a>
+          </button>
         </li>
       </ul>
     </>
