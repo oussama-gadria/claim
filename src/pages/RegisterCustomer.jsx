@@ -3,7 +3,7 @@ import { CREATE_CUSTOMER_MUTATION } from "../graphqlFiles/mutations";
 import { useMutation } from "@apollo/client";
 import GenderDropDowm from "../components/common/GenderDropDown";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterCustomer = () => {
   const [firstname, setFirstname] = useState();
@@ -16,6 +16,7 @@ const RegisterCustomer = () => {
   const [confirmPassword, setconfirmPassword] = useState();
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
   const [createCustomer] = useMutation(CREATE_CUSTOMER_MUTATION);
+  const navigate=useNavigate();
   const {
     register,
     handleSubmit,
@@ -48,7 +49,7 @@ const RegisterCustomer = () => {
       setIsPasswordConfirm(false);
       createCustomer({ variables: { input } })
         .then((response) => {
-          console.log(response.data.createCustomerV2.customer);
+         navigate('/SignIn');
         })
         .catch((error) => {
           setErrorMessage(error);
@@ -256,7 +257,7 @@ const RegisterCustomer = () => {
             <div>
               <input
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-blue px-3 py-3 pl-1 text-2xl font-semibold leading-6 text-white shadow-sm "
+                className="flex cursor-pointer w-full justify-center rounded-md bg-blue px-3 py-3 pl-1 text-2xl font-semibold leading-6 text-white shadow-sm "
               />
             </div>
           </form>

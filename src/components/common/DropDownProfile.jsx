@@ -1,7 +1,7 @@
 import { Dropdown, Ripple, initTE } from "tw-elements";
 import { useNavigate } from "react-router-dom";
 initTE({ Dropdown, Ripple });
-const DropDownProfile = ({handleDeleteToken}) => {
+const DropDownProfile = ({ handleDeleteToken }) => {
   const navigate = useNavigate();
   const logOut = () => {
     handleDeleteToken();
@@ -10,7 +10,7 @@ const DropDownProfile = ({handleDeleteToken}) => {
   return (
     <>
       <ul
-        className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg [&[data-te-dropdown-show]]:block"
+        className="dropdown-menu absolute  text-gray-700 pt-1 z-[1000] float-left m-0 hidden min-w-max overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg "
         aria-labelledby="dropdownMenuButton1"
         data-te-dropdown-menu-ref
       >

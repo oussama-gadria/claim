@@ -7,19 +7,19 @@ const Navbar = () => {
         <ul className="flex flex-row font-normal text-white py-4">
           <li className="mx-11 text-xl">
             <Link to="/">
-              <a href="/#">Home</a>
+              <p>Home</p>
             </Link>
           </li>
           <li className="mx-11 text-xl">
             <Link to="/shop">
-              <a href="/#">Products</a>
+              <p>Products</p>
             </Link>
           </li>
           <li className="mx-11 text-xl">
-            <a href="/#">About us</a>
+            <p>About us</p>
           </li>
           <li className="mx-11 text-xl">
-            <a href="/#">Contact us</a>
+            <p>Contact us</p>
           </li>
         </ul>
       </div>

@@ -3,7 +3,6 @@ import SearchByCategory from "../components/searchByCtegory/SearchByCategory";
 import iphone from "../assets/image/iPhone14.jpg";
 import samsung from "../assets/image/samsung.jpg";
 import Discount from "../components/discount/Discount";
-import SearchBySKU from "../components/SearchBySku/SearchBySKU";
 
 const HomePage = () => {
   return (
@@ -42,7 +41,7 @@ const HomePage = () => {
         </div>
       </div>
       <SearchByCategory />
-      <SearchBySKU />
+      {/* <SearchBySKU /> */}
       <Discount />
     </>
   );

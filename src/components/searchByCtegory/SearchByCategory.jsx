@@ -19,11 +19,11 @@ const SearchByCategory = () => {
         </div>
         <div className="grid grid-cols-4 ">
           {categories.map((categorie) => (
-            <Link to={`/category/${categorie.name}/${categorie.uid}`}>
+            <Link key={categorie.uid} to={`/category/${categorie.name}/${categorie.id}`}>
               <div className="items-center bg-white rounded-lg overflow-hidden shadow-lg mr-7 mb-14">
                 <div className="aspect-ratio-container">
                   <img
-                    alt="Bonsai"
+                    alt="..."
                     src="https://s.isanook.com/hi/0/ui/304/1520585/023_galaxys21_ultra_s21plus_lifestyle_RAN.jpg"
                   />
                 </div>

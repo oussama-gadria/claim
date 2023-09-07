@@ -5,27 +5,37 @@ import AvatarSvg from "../../assets/svg/AvatarSvg";
 import DropDownProfile from "../common/DropDownProfile";
 import { useContext, useEffect, useState } from "react";
 import SignInSvg from "../../assets/svg/SignInSvg";
-import jwt_decode from "jwt-decode";
 import SearchForm from "../common/SearchForm";
 import { TokenContext } from "../../context/TokenContext";
-const Header = ({handleDeleteToken}) => {
+import { GET_USER_CONNECT } from "../../graphqlFiles/query";
+import { useQuery } from "@apollo/client";
+const Header = ({ handleDeleteToken }) => {
   const [userIsConnect, setUserIsConnect] = useState(false);
-  const token = useContext(TokenContext) || localStorage.getItem('token');
-  useEffect(()=>{
+  const token = useContext(TokenContext) || localStorage.getItem("token");
+  
+ 
+   
+  const { data } = useQuery(GET_USER_CONNECT, {
+    context: {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  });
+
+  useEffect(() => {
     if (token) {
       setUserIsConnect(true);
-      const userConnect=jwt_decode(token); 
-      console.log(userConnect);
-    }
-    else { 
+    } else {
       setUserIsConnect(false);
     }
-  },[token])
+  }, [token, data]);
+
   return (
     <div className="shadow-xl font-sans">
       <div className="container mx-auto  flex justify-between items-center">
         <Logo />
-        <SearchForm/>
+        <SearchForm />
         <div className="flex flex-row items-center">
           <div className="pr-2">
             <button>
@@ -42,19 +52,11 @@ const Header = ({handleDeleteToken}) => {
             </Link>
           )}
           {userIsConnect && (
-            <div class="relative" data-te-dropdown-ref>
-              <button
-                className="pt-1"
-                type="button"
-                id="dropdownMenuButton1"
-                data-te-dropdown-toggle-ref
-                aria-expanded="false"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
+             <div class="dropdown inline-block relative">
+             <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
                 <AvatarSvg />
               </button>
-              <DropDownProfile handleDeleteToken={handleDeleteToken}/>
+              <DropDownProfile handleDeleteToken={handleDeleteToken} />
             </div>
           )}
         </div>

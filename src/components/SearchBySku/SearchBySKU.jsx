@@ -15,11 +15,11 @@ const SearchBySKU = () => {
     <div className="container mx-auto  pt-8">
         <div className="flex flex-row items-center pt-9 pb-4">
           <p className="font-extrabold text-blue text-[40px]">Search Products By</p>
-          <p className="pl-1 font-extrabold  text-[40px]">Category</p>
+          <p className="pl-1 font-extrabold  text-[40px]">SKU</p>
         </div>
         <div className="grid grid-cols-4 ">
           {categories.map((categorie) => (
-            <Link to={`/category/${categorie.name}/${categorie.uid}`}>
+            <Link key={categorie.uid} to={`/category/${categorie.name}/${categorie._id}`}>
               <div className="items-center bg-white rounded-lg overflow-hidden shadow-lg mr-7 mb-14">
                 <div className="aspect-ratio-container">
                   <img
