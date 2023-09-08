@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { GENERATE_CUSTOMER_TOKEN } from "../graphqlFiles/mutations";
+import { CREATE_EMPTY_CART_MUTATION, GENERATE_CUSTOMER_TOKEN } from "../graphqlFiles/mutations";
 import { useNavigate } from "react-router-dom";
 
-const SignIn = ({handleChangeToken}) => {
+const SignIn = ({ handleChangeToken }) => {
   const navigate = useNavigate();
   const {
     register,
@@ -17,6 +17,7 @@ const SignIn = ({handleChangeToken}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [createTokenCustomer] = useMutation(GENERATE_CUSTOMER_TOKEN);
+  const [createEmptyCart] = useMutation(CREATE_EMPTY_CART_MUTATION);
   const validation = {
     email: { required: true },
     password: { required: true },
@@ -24,7 +25,14 @@ const SignIn = ({handleChangeToken}) => {
   const signInCustomer = () => {
     createTokenCustomer({ variables: { email, password } })
       .then((response) => {
-        handleChangeToken(response.data.generateCustomerToken.token)
+        try {
+          createEmptyCart().then((response) => {
+            localStorage.setItem('CartId',response.data.createEmptyCart)
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        handleChangeToken(response.data.generateCustomerToken.token);
         navigate("/");
       })
       .catch((err) => {
