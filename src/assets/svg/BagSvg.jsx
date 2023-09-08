@@ -1,17 +1,19 @@
-import { useContext, useEffect, useState } from "react";
-import { CartListProductContext } from "../../context/CartListProduct";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_ITEMS_CART } from "../../graphqlFiles/query";
+
 const BagSvg = () => {
   const navigate = useNavigate();
-  const [productCount, setProductCount] = useState(0);
-  const productsToBuy = useContext(CartListProductContext);
+  const [productCount, setProductCount] = useState([]);
+  const cartId = localStorage.getItem("CartId");
+  const { data } = useQuery(GET_ITEMS_CART, { variables: { cartId } });
+
   useEffect(() => {
-    if (productsToBuy.length !== 0) {
-      productsToBuy.then((result) => {
-        setProductCount(result.length);
-      });
+    if (data) {
+      setProductCount(data.cart.items.length);
     }
-  }, [productsToBuy]);
+  }, [data]);
 
   return (
     <div className="relative">
@@ -22,7 +24,7 @@ const BagSvg = () => {
         strokeWidth="1.5"
         stroke="#255174"
         className="w-8 h-8 "
-        onClick={() => navigate(`/cartShop/${localStorage.getItem('CartId')}`)}
+        onClick={() => navigate(`/cartShop/${localStorage.getItem("CartId")}`)}
         style={{ cursor: "pointer" }}
       >
         <path

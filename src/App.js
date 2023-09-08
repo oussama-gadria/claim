@@ -14,6 +14,7 @@ import { CartListProductContext } from "./context/CartListProduct";
 import Cart from "./pages/Cart";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCTS_TO_CART_MUTATION } from "./graphqlFiles/mutations";
+import ShippingAdresse from "./pages/ShippingAdresse";
 function App() {
   const initialToken = "";
   const initialCart = [];
@@ -37,7 +38,7 @@ function App() {
         },
       ];
       try {
-        const cartId=localStorage.getItem("CartId");
+        const cartId = localStorage.getItem("CartId");
         const response = await addItemToCart({
           variables: { cartId, cartItems },
         });
@@ -79,7 +80,7 @@ function App() {
     cartListProductsReducer,
     initialCart
   );
-  
+
   return (
     <TokenContext.Provider value={token}>
       <TokenDispatchContext.Provider value={dispatch}>
@@ -105,6 +106,10 @@ function App() {
                     handleAddProductToCartList={handleAddProductToCartList}
                   />
                 }
+              ></Route>
+              <Route
+                path="/shippingAdresse/:cartId"
+                element={<ShippingAdresse />}
               ></Route>
               <Route path="/cartShop/:cartId" element={<Cart />}></Route>
             </Routes>

@@ -5,6 +5,7 @@ const DropDownProfile = ({ handleDeleteToken }) => {
   const navigate = useNavigate();
   const logOut = () => {
     handleDeleteToken();
+    localStorage.removeItem("CartId");
     navigate("/SignIn");
   };
   return (

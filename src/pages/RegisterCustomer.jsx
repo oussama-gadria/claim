@@ -12,6 +12,9 @@ const RegisterCustomer = () => {
   const [gender, setGender] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [form, setForm] = useState({
+    'email': null
+  })
   const [emailExist, setEmailExist] = useState(false);
   const [confirmPassword, setconfirmPassword] = useState();
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
