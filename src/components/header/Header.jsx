@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import SignInSvg from "../../assets/svg/SignInSvg";
 import SearchForm from "../common/SearchForm";
 import { TokenContext } from "../../context/TokenContext";
-import { GET_USER_CONNECT } from "../../graphqlFiles/query";
+import { GET_USER_CONNECT } from "../../graphql/query";
 import { useQuery } from "@apollo/client";
 const Header = ({ handleDeleteToken }) => {
   const [userIsConnect, setUserIsConnect] = useState(false);

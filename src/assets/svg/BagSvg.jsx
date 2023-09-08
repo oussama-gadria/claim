@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { GET_ITEMS_CART } from "../../graphqlFiles/query";
+import { GET_ITEMS_CART } from "../../graphql/query";
 
 const BagSvg = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { GET_ITEMS_CART } from "../../graphqlFiles/query";
+import { GET_ITEMS_CART } from "../../graphql/query";
 import { useNavigate } from "react-router-dom";
 
 const CartComponent = () => {

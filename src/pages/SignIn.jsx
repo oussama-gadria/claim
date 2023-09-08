@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { CREATE_EMPTY_CART_MUTATION, GENERATE_CUSTOMER_TOKEN } from "../graphqlFiles/mutations";
+import { CREATE_EMPTY_CART_MUTATION, GENERATE_CUSTOMER_TOKEN } from "../graphql/mutations";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = ({ handleChangeToken }) => {

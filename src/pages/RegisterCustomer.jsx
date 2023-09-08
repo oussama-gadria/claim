@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CREATE_CUSTOMER_MUTATION } from "../graphqlFiles/mutations";
+import { CREATE_CUSTOMER_MUTATION } from "../graphql/mutations";
 import { useMutation } from "@apollo/client";
 import GenderDropDowm from "../components/common/GenderDropDown";
 import { useForm } from "react-hook-form";
@@ -12,9 +12,6 @@ const RegisterCustomer = () => {
   const [gender, setGender] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  const [form, setForm] = useState({
-    'email': null
-  })
   const [emailExist, setEmailExist] = useState(false);
   const [confirmPassword, setconfirmPassword] = useState();
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
