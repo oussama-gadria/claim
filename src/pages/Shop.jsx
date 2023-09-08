@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import BackButton from "../components/buttons/BackButton";
 import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS_BY_CATEGORY } from "../graphqlFiles/query";
+import { GET_PRODUCTS_BY_CATEGORY } from "../graphql/query";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/cards/ProductCard";
 

@@ -13,7 +13,7 @@ import ProductPage from "./pages/ProductPage";
 import { CartListProductContext } from "./context/CartListProduct";
 import Cart from "./pages/Cart";
 import { useMutation } from "@apollo/client";
-import { ADD_PRODUCTS_TO_CART_MUTATION } from "./graphqlFiles/mutations";
+import { ADD_PRODUCTS_TO_CART_MUTATION } from "./graphql/mutations";
 import ShippingAdresse from "./pages/ShippingAdresse";
 function App() {
   const initialToken = "";

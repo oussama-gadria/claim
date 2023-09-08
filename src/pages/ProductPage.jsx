@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { GET_PRODUCT_DATA_BY_SKU } from "../graphqlFiles/query";
+import { GET_PRODUCT_DATA_BY_SKU } from "../graphql/query";
 import QuantityButton from "../components/buttons/QuantityButton";
 
 const ProductPage = ({ handleAddProductToCartList }) => {

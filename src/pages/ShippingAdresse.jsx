@@ -1,16 +1,19 @@
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import {
+  ADD_SHIPPING_ADDRESS,
+} from "../graphql/mutations";
 
 const ShippingAdresse = () => {
-  const [email, setEmail] = useState();
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [company, setCompany] = useState();
   const [streetAdress, setStreetAdress] = useState();
   const [postCode, setPostCode] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
-  
+  const [addShippingAdresse] = useMutation(ADD_SHIPPING_ADDRESS);
+
   const {
     register,
     handleSubmit,
@@ -28,7 +31,31 @@ const ShippingAdresse = () => {
 
   const saveCustomer = () => {
     const cartId = localStorage.getItem("CartId");
-    const ShippingAdresse = [{}];
+    const ShippingAdresse = [
+      {
+        address: {
+          firstname: firstname,
+          lastname: lastname,
+          company: company,
+          street: streetAdress,
+          postcode: postCode,
+          telephone: phoneNumber,
+          country_code: "GB", 
+          city: "London"
+        },
+      },
+    ];
+    const input = {
+      cart_id: cartId,
+      shipping_addresses: ShippingAdresse,
+    };
+    addShippingAdresse({ variables: { input } })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -43,32 +70,6 @@ const ShippingAdresse = () => {
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={handleSubmit(saveCustomer)} className="space-y-6">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-lg font-extrabold leading-6 text-gray-900"
-              >
-                Email
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  {...register("email", validation.email)}
-                  type="email"
-                  autoComplete="email"
-                  className=" w-full font-bold rounded-md border-0 text-xl py-1 pl-1 text-black shadow-sm ring-1 ring-inset ring-gray-300 "
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </div>
-              {errors?.email?.type === "required" && (
-                <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-md text-red-700">
-                  <p>Email is required !</p>
-                </div>
-              )}
-            </div>
-
             <div>
               <label
                 htmlFor="firstname"
