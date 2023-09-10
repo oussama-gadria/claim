@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const CartComponent = () => {
   const navigate=useNavigate();
-  const [numberPlantInCart, setNumberPlantInCart] = useState();
   const [cartItem, setCartItem] = useState([]);
   const cartId = localStorage.getItem("CartId");
   const { data } = useQuery(GET_ITEMS_CART, { variables: { cartId } });
@@ -74,7 +73,7 @@ const CartComponent = () => {
                   </span>
                 </div>
               ))}
-              <button className="bg-blue font-semibold py-3 text-sm text-white uppercase w-full" onClick={()=>{navigate(`/ShippingAdresse/${localStorage.getItem("CartId")}`)}}>
+              <button className="bg-blue font-semibold py-3 text-sm text-white uppercase w-full" onClick={()=>{navigate("/paymentProcess")}}>
                 Proceed To Checkout
               </button>
             </div>

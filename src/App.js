@@ -17,6 +17,7 @@ import { ADD_PRODUCTS_TO_CART_MUTATION } from "./graphql/mutations";
 import ShippingAdresse from "./pages/ShippingAdresse";
 import BillingAdresse from "./pages/BillingAdresse";
 import ReviewAndPayment from "./pages/ReviewAndPayment";
+import PaymentProcess from "./pages/PaymentProcess";
 function App() {
   const initialToken = "";
   const initialCart = [];
@@ -122,6 +123,11 @@ function App() {
                element={<ReviewAndPayment/>}> 
               </Route>
               <Route path="/cartShop/:cartId" element={<Cart />}></Route>
+              <Route
+                path="/paymentProcess"
+                 element={<PaymentProcess/>}> 
+
+              </Route>
             </Routes>
             <Footer />
           </div>

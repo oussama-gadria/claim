@@ -2,9 +2,8 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ADD_BILLING_ADRESSE } from "../graphql/mutations";
-import { useNavigate } from "react-router-dom";
 
-const BillingAdresse = () => {
+const BillingAdresse = ({setActiveStep}) => {
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [company, setCompany] = useState();
@@ -12,7 +11,6 @@ const BillingAdresse = () => {
   const [postCode, setPostCode] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [addBillingAdresse] = useMutation(ADD_BILLING_ADRESSE);
-  const navigate = useNavigate();
 
   const {
     register,
@@ -52,7 +50,7 @@ const BillingAdresse = () => {
     console.log(input);
     addBillingAdresse({ variables: { input } })
       .then((response) => {
-        navigate(`/review&payment/${cartId}`);
+        setActiveStep("address")
       })
       .catch((error) => {
         console.log(error);
@@ -61,13 +59,6 @@ const BillingAdresse = () => {
 
   return (
     <>
-      <div className="bg-gray h-[184px] flex items-center">
-        <div className="container  flex flex-row mx-auto items-center ">
-          <div className="font-bold text-green ml-4 text-[60px]">
-            Billing Address
-          </div>
-        </div>
-      </div>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form

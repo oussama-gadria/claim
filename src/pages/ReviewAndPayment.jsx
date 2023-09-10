@@ -1,13 +1,11 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GET_ITEMS_CART } from "../graphql/query";
-import { useNavigate } from "react-router-dom";
 import BillingAdresseComponent from "../components/common/BillingAdressComponent";
 import ShippingAdresseComponent from "../components/common/ShippingAdresseComponent";
 import { PLACE_ORDER } from "../graphql/mutations";
 
-const ReviewAndPayment = () => {
-  const navigate = useNavigate();
+const ReviewAndPayment = ({handleStepClick}) => {
   const [totalPrice, setTotalPrice] = useState();
   const [cartItem, setCartItem] = useState([]);
   const cartId = localStorage.getItem("CartId");
@@ -36,16 +34,9 @@ const ReviewAndPayment = () => {
   }, [cartItem]);
   return (
     <>
-      <div className="bg-gray h-[184px] flex items-center">
-        <div className="container  flex flex-row mx-auto items-center ">
-          <div className="font-bold text-green ml-4 text-[60px]">
-            Review And Payment
-          </div>
-        </div>
-      </div>
-      <div className="container mx-auto flex flex-row justify-between">
+      <div className=" flex flex-row justify-between">
         <div className="bg-gray-100">
-          <div className="flex justify-center container mx-auto my-14">
+          <div className="flex justify-center my-14">
             <div className="w-[800px] shadow-md ">
               <div className=" bg-white px-10 py-10">
                 <div className="flex justify-between border-b pb-8">
@@ -105,7 +96,7 @@ const ReviewAndPayment = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
+        <div className=" flex flex-col">
           <div id="summary" className="w-[600px]  my-24">
             <h1 className="font-semibold text-2xl border-b pb-8">
               Order Summary

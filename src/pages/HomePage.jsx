@@ -7,7 +7,7 @@ import Discount from "../components/discount/Discount";
 const HomePage = () => {
   return (
     <>
-      <div className="container mx-auto flex flex-row pt-12">
+      <div className="container mx-auto flex flex-row">
         <div className="relative pr-4 pt-8">
           <img
             className="w-full h-[700px] rounded-3xl shadow-2xl "

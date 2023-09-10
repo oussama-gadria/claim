@@ -12,7 +12,7 @@ const SearchByCategory = () => {
   }, [data]);
   return (
     <>
-      <div className="container mx-auto pt-16">
+      <div className="container mx-auto pt-8">
         <div className="flex flex-row items-center pt-9 pb-4">
           <p className="font-extrabold text-blue text-[40px]">Search Products By</p>
           <p className="pl-1 font-extrabold  text-[40px]">Category</p>
