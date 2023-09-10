@@ -15,6 +15,8 @@ import Cart from "./pages/Cart";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCTS_TO_CART_MUTATION } from "./graphql/mutations";
 import ShippingAdresse from "./pages/ShippingAdresse";
+import BillingAdresse from "./pages/BillingAdresse";
+import ReviewAndPayment from "./pages/ReviewAndPayment";
 function App() {
   const initialToken = "";
   const initialCart = [];
@@ -111,6 +113,14 @@ function App() {
                 path="/shippingAdresse/:cartId"
                 element={<ShippingAdresse />}
               ></Route>
+              <Route 
+               path="/billingAdresse/:cartId" 
+                element={<BillingAdresse/>}> 
+              </Route>
+              <Route
+              path="/review&payment/:cartId"  
+               element={<ReviewAndPayment/>}> 
+              </Route>
               <Route path="/cartShop/:cartId" element={<Cart />}></Route>
             </Routes>
             <Footer />

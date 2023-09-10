@@ -16,7 +16,7 @@ const RegisterCustomer = () => {
   const [confirmPassword, setconfirmPassword] = useState();
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
   const [createCustomer] = useMutation(CREATE_CUSTOMER_MUTATION);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -49,7 +49,7 @@ const RegisterCustomer = () => {
       setIsPasswordConfirm(false);
       createCustomer({ variables: { input } })
         .then((response) => {
-         navigate('/SignIn');
+          navigate("/SignIn");
         })
         .catch((error) => {
           setErrorMessage(error);

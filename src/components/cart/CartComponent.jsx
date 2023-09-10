@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const CartComponent = () => {
   const navigate=useNavigate();
+  const [numberPlantInCart, setNumberPlantInCart] = useState();
   const [cartItem, setCartItem] = useState([]);
   const cartId = localStorage.getItem("CartId");
   const { data } = useQuery(GET_ITEMS_CART, { variables: { cartId } });

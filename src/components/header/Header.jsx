@@ -12,9 +12,7 @@ import { useQuery } from "@apollo/client";
 const Header = ({ handleDeleteToken }) => {
   const [userIsConnect, setUserIsConnect] = useState(false);
   const token = useContext(TokenContext) || localStorage.getItem("token");
-  
- 
-   
+
   const { data } = useQuery(GET_USER_CONNECT, {
     context: {
       headers: {
@@ -52,8 +50,8 @@ const Header = ({ handleDeleteToken }) => {
             </Link>
           )}
           {userIsConnect && (
-             <div class="dropdown inline-block relative">
-             <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+            <div class="dropdown inline-block relative">
+              <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
                 <AvatarSvg />
               </button>
               <DropDownProfile handleDeleteToken={handleDeleteToken} />

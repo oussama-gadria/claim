@@ -18,8 +18,47 @@ export const CREATE_CUSTOMER_MUTATION = gql`
   }
 `;
 
+export const PLACE_ORDER = gql`
+  mutation placeOrder($input: PlaceOrderInput) {
+    placeOrder(input: $input) {
+      order {
+        order_number
+      }
+    }
+  }
+`;
+
+export const ADD_BILLING_ADRESSE = gql`
+  mutation setBillingAddressOnCart($input: SetBillingAddressOnCartInput!) {
+    setBillingAddressOnCart(input: $input) {
+      cart {
+        billing_address {
+          firstname
+          lastname
+          company
+          street
+          city
+          region {
+            code
+            region_id
+            label
+          }
+          postcode
+          telephone
+          country {
+            code
+            label
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const ADD_SHIPPING_ADDRESS = gql`
-  mutation addShippingAddressesOnCart($input: SetShippingAddressesOnCartInput!) {
+  mutation addShippingAddressesOnCart(
+    $input: SetShippingAddressesOnCartInput!
+  ) {
     setShippingAddressesOnCart(input: $input) {
       cart {
         id
