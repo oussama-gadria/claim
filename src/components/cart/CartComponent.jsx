@@ -73,7 +73,7 @@ const CartComponent = () => {
                   </span>
                 </div>
               ))}
-              <button className="bg-blue font-semibold py-3 text-sm text-white uppercase w-full" onClick={()=>{navigate(`/ShippingAdresse/${localStorage.getItem("CartId")}`)}}>
+              <button className="bg-blue font-semibold py-3 text-sm text-white uppercase w-full" onClick={()=>{navigate("/paymentProcess")}}>
                 Proceed To Checkout
               </button>
             </div>

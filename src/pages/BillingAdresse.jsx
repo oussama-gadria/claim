@@ -1,17 +1,17 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ADD_SHIPPING_ADDRESS } from "../graphql/mutations";
+import { ADD_BILLING_ADRESSE } from "../graphql/mutations";
 
-const ShippingAdresse = ({setActiveStep}) => {
+const BillingAdresse = ({setActiveStep}) => {
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [company, setCompany] = useState();
   const [streetAdress, setStreetAdress] = useState();
   const [postCode, setPostCode] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
-  const [addShippingAdresse] = useMutation(ADD_SHIPPING_ADDRESS);
-  const cartId = localStorage.getItem("CartId");
+  const [addBillingAdresse] = useMutation(ADD_BILLING_ADRESSE);
+
   const {
     register,
     handleSubmit,
@@ -27,28 +27,30 @@ const ShippingAdresse = ({setActiveStep}) => {
     phoneNumber: { required: true },
   };
 
-  const saveCustomer = () => {
-    const ShippingAdresse = [
-      {
-        address: {
-          firstname: firstname,
-          lastname: lastname,
-          company: company,
-          street: streetAdress,
-          postcode: postCode,
-          telephone: phoneNumber,
-          country_code: "GB",
-          city: "London",
-        },
+  const addBillingAdresseOnCart = () => {
+    const cartId = localStorage.getItem("CartId");
+    const billingAdresse = {
+      address: {
+        firstname: firstname,
+        lastname: lastname,
+        company: company,
+        street: [streetAdress],
+        postcode: postCode,
+        telephone: phoneNumber,
+        country_code: "GB",
+        city: "London",
+        save_in_address_book: true,
       },
-    ];
+      same_as_shipping: false,
+    };
     const input = {
       cart_id: cartId,
-      shipping_addresses: ShippingAdresse,
+      billing_address: billingAdresse,
     };
-    addShippingAdresse({ variables: { input } })
+    console.log(input);
+    addBillingAdresse({ variables: { input } })
       .then((response) => {
-        setActiveStep("account");
+        setActiveStep("address")
       })
       .catch((error) => {
         console.log(error);
@@ -59,7 +61,10 @@ const ShippingAdresse = ({setActiveStep}) => {
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form onSubmit={handleSubmit(saveCustomer)} className="space-y-6">
+          <form
+            onSubmit={handleSubmit(addBillingAdresseOnCart)}
+            className="space-y-6"
+          >
             <div>
               <label
                 htmlFor="firstname"
@@ -195,7 +200,7 @@ const ShippingAdresse = ({setActiveStep}) => {
                 />
                 {errors?.phoneNumber?.type === "required" && (
                   <div className="border mt-1  border-red-400 rounded bg-red-100 px-4 py-1 text-xs text-red-700">
-                    <p>phoneNumber name is required !</p>
+                    <p>phone number name is required !</p>
                   </div>
                 )}
               </div>
@@ -212,4 +217,4 @@ const ShippingAdresse = ({setActiveStep}) => {
     </>
   );
 };
-export default ShippingAdresse;
+export default BillingAdresse;

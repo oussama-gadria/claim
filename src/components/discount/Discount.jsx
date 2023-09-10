@@ -1,7 +1,7 @@
 const Discount = () => {
   return (
     <>
-      <div className="container mx-auto pb-32 pt-14">
+      <div className="container mx-auto pb-24 pt-8">
         <div className="flex flex-col justify-center bg-gradient-to-br h-[500px] bg-blue  text-white text-center py-10 px-20 rounded-lg shadow-md relative">
           <div>
             <h3 className="text-2xl font-semibold mb-4">
