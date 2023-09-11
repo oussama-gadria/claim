@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Claim
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Claim is an e-commerce project built with Magento, React, and GraphQL. It provides a platform for users to browse and purchase phones online, with an additional feature for claiming broken products and assessing insurance eligibility.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User authentication: Sign up and sign in functionality for users to create accounts and log in.
+- Home page: View a selection of featured phones and browse through various categories.
+- Product listing: Explore a wide range of phones with detailed descriptions and specifications.
+- Cart functionality: Add phones to the cart, update quantities, and proceed to checkout.
+- Checkout process: Enter shipping and billing addresses, select payment method, and confirm the order.
+- Claim and report broken products: Users can report if a product they received is broken or damaged. They can provide relevant information about the issue.
+- Insurance assessment: Based on the information provided, the company can evaluate whether to provide insurance coverage for the claimed product.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Backend: Magento
+- Frontend: React
+- API: GraphQL
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+git clone https://github.com/your-username/claim.git
 
-### `npm run build`
+2. Install dependencies for the backend (Magento) and follow the setup instructions provided in the backend repository.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies for the frontend (React) by navigating to the frontend directory:
+   
+cd frontend
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the frontend development server:
+   
+npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Access the application by opening your web browser and visiting: [http://localhost:3000](http://localhost:3000)
