@@ -40,4 +40,4 @@ npm start
 5. Access the application by opening your web browser and visiting: [http://localhost:3000](http://localhost:3000)
 
 
-![Description]([(https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg?w=2000)https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg?w=2000])]
+![Description]([(https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg?w=2000)https://img.freepik.com/free-vector/abstract-coming-soon-halftone-style-background-design_1017-27282.jpg?w=2000])
