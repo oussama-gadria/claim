@@ -22,7 +22,7 @@ Claim is an e-commerce project built with Magento, React, and GraphQL. It provid
 
 1. Clone the repository:
 
-git clone https://github.com/your-username/claim.git
+git clone https://github.com/oussama-gadria/claim.git
 
 2. Install dependencies for the backend (Magento) and follow the setup instructions provided in the backend repository.
 
